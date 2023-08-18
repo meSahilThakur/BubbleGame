@@ -9,6 +9,17 @@ function makeBubble() {
 }
 makeBubble();
 
+// Function to restart the Game
+function restartGame() {
+  gameIsOver = false;
+  timer = 60;
+  score = 0;
+  document.querySelector("#timerValue").textContent = timer;
+  document.querySelector("#scoreValue").textContent = score;
+  makeBubble();
+  getNewHit();
+  runTimer();
+}
 
 // Making of timer for 60 seconds
 let timer = 60;
@@ -24,7 +35,12 @@ function runTimer() {
       gameIsOver = true; // Set the game-over flag
       document.querySelector(
         "#pbtm"
-      ).innerHTML = `<div><h1>Game Over</h1>  <h1>Your Score is ${score}</h1></div>`;
+      ).innerHTML = `<div><h1>Game Over</h1>  <h1>Your Score is ${score}</h1>  <button id="restartButton">Restart</button></div> `;
+
+      // Add event listener to restart button
+      document.querySelector("#restartButton").addEventListener("click", () => {
+        restartGame();
+      });
     }
   }, 1000);
 }
@@ -49,27 +65,24 @@ function decreaseScore() {
   document.querySelector("#scoreValue").textContent = score;
 }
 
-
 // Defining the click handler function separately
 function handleBubbleClick(details) {
-    if (!gameIsOver) {
-        var clickedElement = details.target;
+  if (!gameIsOver) {
+    var clickedElement = details.target;
 
-        // Check if the clicked element is a bubble
-        if (clickedElement.classList.contains("bubble")) {
-            var clickednumber = Number(clickedElement.textContent);
+    // Check if the clicked element is a bubble
+    if (clickedElement.classList.contains("bubble")) {
+      var clickednumber = Number(clickedElement.textContent);
 
-            if (clickednumber === hitrandomnum) {
-                increaseScore();
-                makeBubble();
-                getNewHit();
-            } else {
-                decreaseScore();
-            }
-        }
+      if (clickednumber === hitrandomnum) {
+        increaseScore();
+        makeBubble();
+        getNewHit();
+      } else {
+        decreaseScore();
+      }
     }
+  }
 }
 
-
 document.querySelector("#pbtm").addEventListener("click", handleBubbleClick);
-
