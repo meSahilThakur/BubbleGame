@@ -80,3 +80,25 @@ html, body{
     }
 }
 
+
+/* Responsive adjustments using media queries */
+@media (max-width: 768px) {
+    #ptop {
+        padding: 0 10%;
+    }
+
+    .elem {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #pbtm {
+        padding: 5px;
+    }
+
+    .bubble {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}

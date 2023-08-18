@@ -9,6 +9,7 @@ function makeBubble() {
 }
 makeBubble();
 
+
 // Making of timer for 60 seconds
 let timer = 60;
 let gameIsOver = false; // Add a flag to track game-over state
@@ -71,3 +72,4 @@ function handleBubbleClick(details) {
 
 
 document.querySelector("#pbtm").addEventListener("click", handleBubbleClick);
+
